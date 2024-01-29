@@ -109,9 +109,13 @@ public class MyArrayList<T> implements MyArrayOperations<T> {
      *
      * @return Строковое представление массива.
      */
-    @Override
-    public String toString() {
-        return Arrays.toString(Arrays.copyOf(array, size));
+//    @Override
+//    public String toString() {
+//        return Arrays.toString(Arrays.copyOf(array, size));
+//    }
+
+    public Object[] getArray() {
+        return Arrays.copyOf(array, size);
     }
 
     /**
@@ -145,7 +149,7 @@ public class MyArrayList<T> implements MyArrayOperations<T> {
      *
      * @param index Индекс элемента для удаления.
      */
-    private void removeAtIndex(int index) {
+    public void removeAtIndex(int index) {
         indexOut(index);
         for (int i = index; i < size - 1; i++) {
             array[i] = array[i + 1];

@@ -1,6 +1,8 @@
 package ru.bikbaev.aston;
 
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -15,18 +17,11 @@ public class Main {
         arrayList.add("7");
         arrayList.add("8");
         System.out.println(arrayList);
-        arrayList.add(2,"2-2");
-        System.out.println(arrayList);
+        arrayList.add(2, "2-2");
+        System.out.println(Arrays.toString(arrayList.getArray()));
 
         arrayList.deleteElement("5");
-        System.out.println(arrayList);
-
-
-
-
-
-
-
+        System.out.println(Arrays.toString(arrayList.getArray()));
 
     }
 }
