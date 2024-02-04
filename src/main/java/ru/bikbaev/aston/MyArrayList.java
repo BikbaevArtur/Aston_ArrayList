@@ -1,6 +1,9 @@
 package ru.bikbaev.aston;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @param <T> Тип элементов, хранящихся в массиве.
@@ -45,6 +48,13 @@ public class MyArrayList<T> implements MyArrayOperations<T> {
         }
         array[index] = element;
         size++;
+    }
+
+    public T set(int index, T element) {
+        Objects.checkIndex(index, size);
+        Object oldElement = array[index];
+        array[index] = element;
+        return (T) oldElement;
     }
 
     /**
@@ -113,7 +123,6 @@ public class MyArrayList<T> implements MyArrayOperations<T> {
 //    public String toString() {
 //        return Arrays.toString(Arrays.copyOf(array, size));
 //    }
-
     public Object[] getArray() {
         return Arrays.copyOf(array, size);
     }
@@ -157,6 +166,7 @@ public class MyArrayList<T> implements MyArrayOperations<T> {
         array[size - 1] = null;
         size--;
     }
+
 
 
 }
