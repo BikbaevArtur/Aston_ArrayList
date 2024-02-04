@@ -2,6 +2,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 import ru.bikbaev.aston.MyArrayList;
+import ru.bikbaev.aston.QuickSort;
 
 import java.util.Arrays;
 
@@ -22,7 +23,6 @@ public class MyArrayListTest {
         assertEquals("El2", stringList.get(1));
         assertEquals("El3", stringList.get(2));
         assertEquals(Arrays.toString(stringArray), Arrays.toString(stringList.getArray()));
-
 
 
         MyArrayList<Integer> intList = new MyArrayList();
@@ -110,26 +110,26 @@ public class MyArrayListTest {
         stringMyArrayList.add("1");
         stringMyArrayList.add("2");
         stringMyArrayList.deleteElement("1");
-        String[] expected  = {"0","2"};
+        String[] expected = {"0", "2"};
 
-        Assert.assertEquals(Arrays.toString(expected),Arrays.toString(stringMyArrayList.getArray()));
+        Assert.assertEquals(Arrays.toString(expected), Arrays.toString(stringMyArrayList.getArray()));
 
     }
 
     @Test
-    public void testClear(){
+    public void testClear() {
         MyArrayList<Object> objectMyArrayList = new MyArrayList<>();
         objectMyArrayList.add(1);
         objectMyArrayList.add(2);
         objectMyArrayList.clear();
-        int[] expected={};
+        int[] expected = {};
 
 
-        Assert.assertEquals(Arrays.toString(expected),Arrays.toString(objectMyArrayList.getArray()));
+        Assert.assertEquals(Arrays.toString(expected), Arrays.toString(objectMyArrayList.getArray()));
     }
 
     @Test
-    public void testRemoveAtIndex(){
+    public void testRemoveAtIndex() {
         MyArrayList<Integer> integerMyArrayList = new MyArrayList<>();
         integerMyArrayList.add(0);
         integerMyArrayList.add(1);
@@ -138,10 +138,10 @@ public class MyArrayListTest {
 
         integerMyArrayList.removeAtIndex(1);
 
-        int[] expected = {0,2,3};
+        int[] expected = {0, 2, 3};
 
-        Assert.assertEquals(Arrays.toString(expected),Arrays.toString(integerMyArrayList.getArray()));
-        assertEquals(3,integerMyArrayList.getSize());
+        Assert.assertEquals(Arrays.toString(expected), Arrays.toString(integerMyArrayList.getArray()));
+        assertEquals(3, integerMyArrayList.getSize());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -156,6 +156,31 @@ public class MyArrayListTest {
         stringList.removeAtIndex(10);
     }
 
+    @Test
+    public void testQuickSort() {
+        MyArrayList<String> stringMyArrayList = new MyArrayList<>();
+        stringMyArrayList.add("Артур");
+        stringMyArrayList.add("Сергей");
+        stringMyArrayList.add("Семен");
+        stringMyArrayList.add("Мария");
+        stringMyArrayList.add("Руслан");
+        QuickSort.sort(stringMyArrayList);
+        String[] expectedString = {"Артур","Мария","Руслан","Семен","Сергей"};
+
+        Assert.assertEquals(Arrays.toString(expectedString),Arrays.toString(stringMyArrayList.getArray()));
+
+        MyArrayList<Integer> integerMyArrayList = new MyArrayList<>();
+        integerMyArrayList.add(8);
+        integerMyArrayList.add(2);
+        integerMyArrayList.add(11);
+        integerMyArrayList.add(10);
+        QuickSort.sort(integerMyArrayList);
+        int[] expectedInt = {2,8,10,11};
+
+        Assert.assertEquals(Arrays.toString(expectedInt),Arrays.toString(integerMyArrayList.getArray()));
+
+
+    }
 
 
 }

@@ -7,4 +7,6 @@ public interface MyArrayOperations<T> {
     void deleteElement(T element);
     void clear();
 
+    void set(int index,T element);
+
 }
