@@ -1,8 +1,7 @@
 package ru.bikbaev.aston;
 
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+
 import java.util.Objects;
 
 /**
@@ -50,11 +49,10 @@ public class MyArrayList<T> implements MyArrayOperations<T> {
         size++;
     }
 
-    public T set(int index, T element) {
+    public void set(int index, T element) {
         Objects.checkIndex(index, size);
         Object oldElement = array[index];
         array[index] = element;
-        return (T) oldElement;
     }
 
     /**
