@@ -9,6 +9,7 @@ import java.util.Objects;
  */
 public class MyArrayList<T> implements MyArrayOperations<T> {
 
+    public static final String OUT_OF_BOUND_ERR_MSG = "Индекс вне допустимых границ";
     private Object[] array;                 // Внутренний массив для хранения элементов
     private int size;                        // Текущий размер массива
     private static final int DEFAULT_CAPACITY = 10;  // Начальная емкость массива по умолчанию
@@ -51,8 +52,7 @@ public class MyArrayList<T> implements MyArrayOperations<T> {
 
     @Override
     public void set(int index, T element) {
-        Objects.checkIndex(index, size);
-        Object oldElement = array[index];
+        Objects.checkIndex(index, size); // почему не indexOut(index)?
         array[index] = element;
     }
 
@@ -113,15 +113,6 @@ public class MyArrayList<T> implements MyArrayOperations<T> {
         }
     }
 
-    /**
-     * Возвращает строковое представление массива, исключая элементы со значением null.
-     *
-     * @return Строковое представление массива.
-     */
-//    @Override
-//    public String toString() {
-//        return Arrays.toString(Arrays.copyOf(array, size));
-//    }
     public Object[] getArray() {
         return Arrays.copyOf(array, size);
     }
@@ -133,7 +124,7 @@ public class MyArrayList<T> implements MyArrayOperations<T> {
      */
     private void indexOut(int index) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Индекс вне допустимых границ");
+            throw new IndexOutOfBoundsException(OUT_OF_BOUND_ERR_MSG);// сообщения в константах
         }
     }
 
